@@ -11,10 +11,9 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 					 )
 {
    
-   Climetednumbapp app(GetCurrentProcessId());
-  
    if (ul_reason_for_call == DLL_PROCESS_ATTACH)
    {
+      Climetednumbapp app(GetCurrentProcessId());
       return app.checkCanWeRun();
    }
    if (ul_reason_for_call == DLL_PROCESS_DETACH)
