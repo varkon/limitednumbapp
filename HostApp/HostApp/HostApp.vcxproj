@@ -41,8 +41,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\progects\cproject\limetednumbapp;$(IncludePath)</IncludePath>
-    <ReferencePath>D:\progects\cproject\limetednumbapp\Debug;$(ReferencePath)</ReferencePath>
+    <IncludePath>P:\limetednumbapp;$(IncludePath)</IncludePath>
+    <ReferencePath>P:\limetednumbapp\Debug;$(ReferencePath)</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>

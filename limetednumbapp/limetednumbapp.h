@@ -7,6 +7,7 @@
 #endif
 
 #define COUNT_OF_PROCESS_LOC 4
+#define COUNT_OF_PROCESS_NET 4
 #define EXT_FILE             ".pid"
 
 #include <iostream>
@@ -20,7 +21,9 @@ class LIMETEDNUMBAPP_API Climetednumbapp {
     static HANDLE _tmpfile;
     static std::wstring pid; 
     static int countFiles(const std::wstring& path, const std::wstring& ext);
+	static int countProccess();
     int readNumberLimit(std::wstring path2file);
+	int readNumberLimitNet(std::wstring path2file);
 public:
    Climetednumbapp(const uint32_t module);
   static void clearModule();
