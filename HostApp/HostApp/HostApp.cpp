@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "HostApp.h"
 #include "limetednumbapp.h"
+#include <thread>
 
 #define MAX_LOADSTRING 100
 
@@ -18,7 +19,7 @@ BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 //extern int nlimetednumbapp;
-
+std::thread *my_thread = NULL;
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPTSTR    lpCmdLine,
@@ -103,7 +104,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
-
+   my_thread = fnlimetednumbapp();
+   
    if (!hWnd)
    {
       return FALSE;
@@ -155,6 +157,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
+      if (my_thread)
+      {
+         my_thread->detach();
+         delete my_thread;
+      }
 		PostQuitMessage(0);
 		break;
 	default:
@@ -166,7 +173,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 // Message handler for about box.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
-   int test = fnlimetednumbapp();
+
 	UNREFERENCED_PARAMETER(lParam);
 	switch (message)
 	{
